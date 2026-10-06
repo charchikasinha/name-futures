@@ -60,9 +60,10 @@ export function getCareerData(name: string) {
     "Partner · Amateur Ceramicist · Disruptor",
     "Building quietly · Posting loudly",
   ];
+  const headline = headlines[metric(`headline:${name}`, 0, headlines.length - 1)] ?? "Building quietly · Posting loudly";
   return {
     industries,
-    headline: headlines[metric(`headline:${name}`, 0, headlines.length - 1)] ?? headlines[0],
+    headline,
     cSuiteCount: metric(`csuite:${name}`, 8, 812),
   };
 }

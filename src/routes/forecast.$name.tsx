@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ArrowLeft, BriefcaseBusiness, Building2, Crown, Heart, HeartHandshake, MapPin, Scale, School, Sparkles } from "lucide-react";
+import { ArrowLeft, BriefcaseBusiness, Building2, Crown, Heart, HeartHandshake, MapPin, Scale, Sparkles } from "lucide-react";
 
 import { Gauge, ScoreBars } from "@/components/name-futures/charts";
 import { DoodleGarden } from "@/components/name-futures/doodles";
@@ -10,7 +10,7 @@ import { getForecast, getNameScore } from "@/data/providers";
 
 export const Route = createFileRoute("/forecast/$name")({
   validateSearch: (search) => ({
-    area: typeof search.area === "string" && search.area.trim() ? search.area : "Somewhere promising",
+    area: typeof search["area"] === "string" && search["area"].trim() ? search["area"] : "Somewhere promising",
   }),
   head: ({ params }) => {
     const label = decodeURIComponent(params.name);
