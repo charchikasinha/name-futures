@@ -1,6 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowLeft, BriefcaseBusiness, Building2, Crown, Heart, HeartHandshake, MapPin, Scale, School, Sparkles } from "lucide-react";
-import { z } from "zod";
 
 import { Gauge, ScoreBars } from "@/components/name-futures/charts";
 import { DoodleGarden } from "@/components/name-futures/doodles";
@@ -9,10 +8,10 @@ import { Button } from "@/components/ui/button";
 import { useNameFutures } from "@/context/name-futures-context";
 import { getForecast, getNameScore } from "@/data/providers";
 
-const searchSchema = z.object({ area: z.string().catch("Somewhere promising") });
-
 export const Route = createFileRoute("/forecast/$name")({
-  validateSearch: searchSchema,
+  validateSearch: (search) => ({
+    area: typeof search.area === "string" && search.area.trim() ? search.area : "Somewhere promising",
+  }),
   head: ({ params }) => {
     const label = decodeURIComponent(params.name);
     return {

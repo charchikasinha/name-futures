@@ -103,6 +103,7 @@ export function getLoveData(name: string) {
 
 export function getOfficeholders(name: string, area: string) {
   const firstName = name.trim().split(/\s+/)[0]?.toLocaleLowerCase() ?? "";
+  const displayFirstName = firstName ? `${firstName.charAt(0).toLocaleUpperCase()}${firstName.slice(1)}` : "Baby";
   const presidents = PRESIDENTS.filter(
     (president) => president.split(" ")[0]?.toLocaleLowerCase() === firstName,
   );
@@ -110,7 +111,7 @@ export function getOfficeholders(name: string, area: string) {
   const roles = ["Mayor", "Governor", "Council Member"];
   const count = metric(`officials:${name}:${area}`, 1, 3);
   const locals = Array.from({ length: count }, (_, index) => ({
-    name: `${name.split(" ")[0]} ${surnames[metric(`${area}:${index}`, 0, surnames.length - 1)]}`,
+    name: `${displayFirstName} ${surnames[metric(`${area}:${index}`, 0, surnames.length - 1)]}`,
     role: roles[index] ?? "Council Member",
   }));
   return {
