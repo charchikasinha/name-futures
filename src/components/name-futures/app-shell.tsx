@@ -38,17 +38,17 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen overflow-hidden bg-background text-foreground">
       <header className="relative z-30 mx-auto flex max-w-7xl items-center justify-between px-5 py-5 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 text-primary" aria-label="Name Futures home">
+        <Link to="/" className="flex items-center gap-2 text-primary" aria-label="Baby Perfect home">
           <span className="flex size-10 rotate-3 items-center justify-center rounded-xl border-2 border-primary bg-accent text-accent-foreground shadow-pop">
             <Scale className="size-5" strokeWidth={3} />
           </span>
-          <span className="font-display text-lg font-black sm:text-xl">Name Futures</span>
+          <span className="font-display text-lg font-black sm:text-xl">Baby Perfect</span>
         </Link>
         <PlanToggle />
       </header>
       {children}
       <footer className="relative z-10 mx-auto max-w-7xl border-t-2 border-primary/20 px-5 py-7 text-center text-sm font-semibold text-primary/80 lg:px-8">
-        For entertainment only. Not science. Please name your baby whatever you love.
+        Baby Perfect is for entertainment only. Not science. Please name your baby whatever you love.
       </footer>
     </div>
   );

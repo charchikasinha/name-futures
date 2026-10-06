@@ -10,16 +10,16 @@ import { getForecast, getNameScore } from "@/data/providers";
 
 export const Route = createFileRoute("/forecast/$name")({
   validateSearch: (search) => ({
-    area: typeof search["area"] === "string" && search["area"].trim() ? search["area"] : "Somewhere promising",
+    area: typeof search["area"] === "string" && search["area"].trim() ? search["area"] : "Somewhere concerning",
   }),
   head: ({ params }) => {
     const label = decodeURIComponent(params.name);
     return {
       meta: [
-        { title: `${label} Name Prospectus — Name Futures` },
-        { name: "description", content: `Career, classroom, happiness and power projections for ${label}. Satire, not science.` },
-        { property: "og:title", content: `${label}: the official-ish Name Prospectus` },
-        { property: "og:description", content: "A wildly confident forecast of one baby's future name performance." },
+        { title: `${label} Name Prospectus — Baby Perfect` },
+        { name: "description", content: `Baby Perfect finds the playful downside in career, classroom, happiness and power projections for ${label}. Satire, not science.` },
+        { property: "og:title", content: `${label}: Baby Perfect's official-ish rejection` },
+        { property: "og:description", content: "A wildly confident forecast explaining why no baby name is quite good enough." },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
@@ -35,6 +35,7 @@ function ForecastPage() {
   const data = getForecast(name, area);
   const { shortlist, addName } = useNameFutures();
   const compareNames = Array.from(new Set([name, ...shortlist])).slice(0, 3);
+  const leastBadName = compareNames.reduce((best, candidate) => getNameScore(candidate, area) > getNameScore(best, area) ? candidate : best, compareNames[0] ?? name);
 
   return (
     <main className="relative mx-auto max-w-7xl px-5 pb-20 pt-4 lg:px-8">
@@ -58,7 +59,7 @@ function ForecastPage() {
       </section>
 
       <div className="mt-9 grid gap-6 lg:grid-cols-2">
-        <ForecastCard feature="industry" eyebrow="professional upside" title="Industry outlook" source="LinkedIn-style professional dataset (simulated)" className="lg:row-span-2">
+        <ForecastCard feature="industry" eyebrow="professional downside" title="Industry outlook" source="LinkedIn-style professional dataset (simulated)" className="lg:row-span-2">
           <ScoreBars values={data.career.industries} />
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <Stat icon={<BriefcaseBusiness />} label="Most likely LinkedIn headline" value={data.career.headline} />
@@ -69,7 +70,7 @@ function ForecastPage() {
         <ForecastCard feature="school" eyebrow="early indicators" title="School" source="local school data (simulated)">
           <div className="grid grid-cols-[auto_1fr] items-center gap-5">
             <div className="grid size-24 place-items-center rounded-full border-[10px] border-secondary bg-primary font-display text-3xl font-black text-primary-foreground">{data.school.academicScore}</div>
-            <div><p className="text-xs font-black uppercase text-muted-foreground">Academic outlook</p><p className="mt-1 font-display text-xl font-black text-primary">Top-of-the-fridge potential</p></div>
+            <div><p className="text-xs font-black uppercase text-muted-foreground">Academic outlook</p><p className="mt-1 font-display text-xl font-black text-primary">Bottom-drawer report card energy</p></div>
           </div>
           <div className="mt-5 grid grid-cols-3 gap-2 text-center">
             <MiniStat label="Reading" value={`${data.school.reading}%`} />
@@ -90,20 +91,21 @@ function ForecastPage() {
         </ForecastCard>
 
         <ForecastCard feature="love" eyebrow="romantic liquidity" title="Will they find love?" source="meet-cute probability engine (simulated)">
-          <div className="flex items-center gap-4"><HeartHandshake className="size-14 text-accent" /><div><strong className="font-display text-5xl font-black text-primary">{data.love.probability}%</strong><p className="text-xs font-bold text-muted-foreground">probability of an excellent plus-one</p></div></div>
-          <p className="mt-5 text-xs font-black uppercase text-muted-foreground">Most compatible names</p>
+          <div className="flex items-center gap-4"><HeartHandshake className="size-14 text-accent" /><div><strong className="font-display text-5xl font-black text-primary">{data.love.probability}%</strong><p className="text-xs font-bold text-muted-foreground">probability of an adequate plus-one</p></div></div>
+          <p className="mt-5 text-xs font-black uppercase text-muted-foreground">Compatible long shots</p>
           <div className="mt-2 flex flex-wrap gap-2">{data.love.matches.map((match) => <span key={match} className="rounded-full bg-secondary px-3 py-2 text-sm font-extrabold text-primary"><Heart className="mr-1 inline size-3 fill-current" />{match}</span>)}</div>
         </ForecastCard>
 
         <ForecastCard feature="power" eyebrow="executive branch energy" title="Power namesakes" source="US presidents list + local news (simulated)">
           <div className="flex items-start gap-4"><Crown className="mt-1 size-10 text-accent" /><div><p className="text-xs font-black uppercase text-muted-foreground">Presidential matches</p><p className="font-display text-xl font-black text-primary">{data.power.presidents.length ? data.power.presidents.join(", ") : "No precedent. Pioneer pricing applies."}</p></div></div>
           <div className="mt-4 space-y-2">{data.power.locals.map((person) => <div key={`${person.name}-${person.role}`} className="flex justify-between rounded-lg bg-secondary/60 px-3 py-2 text-sm"><strong>{person.name}</strong><span>{person.role} · {area}</span></div>)}</div>
-          <p className="mt-4 text-sm font-black text-primary">Odds of becoming president: <span className="text-accent">{data.power.odds}</span></p>
+          <p className="mt-4 text-sm font-black text-primary">Terrible odds of becoming president: <span className="text-accent">{data.power.odds}</span></p>
         </ForecastCard>
 
-        <ForecastCard feature="compare" eyebrow="premium weighing room" title="Compare names" source="Name Futures proprietary scales (deeply simulated)" className="lg:col-span-2">
-          <div className="grid gap-4 sm:grid-cols-3">{compareNames.map((candidate, index) => { const score = getNameScore(candidate, area); return <div key={candidate} className={`rounded-2xl border-2 border-primary p-4 text-center ${index === 1 ? "sm:translate-y-5" : ""}`}><Scale className="mx-auto size-7 text-accent" /><p className="mt-2 truncate font-display text-xl font-black text-primary">{candidate}</p><p className="font-display text-4xl font-black text-primary">{score}</p><div className="mx-auto mt-3 h-2 overflow-hidden rounded-full bg-secondary"><div className="h-full bg-accent" style={{ width: `${score}%` }} /></div></div>; })}</div>
-          {compareNames.length < 2 && <p className="mt-6 text-center text-sm font-bold text-muted-foreground">Add more names to your shortlist to create unnecessary tension.</p>}
+        <ForecastCard feature="compare" eyebrow="premium losing room" title="Compare names" source="Baby Perfect proprietary scales (deeply simulated)" className="lg:col-span-2">
+          <p className="mb-4 text-center text-sm font-extrabold text-primary">Every name loses. <Crown className="inline size-4 text-accent" /> {leastBadName} is merely the least bad.</p>
+          <div className="grid gap-4 sm:grid-cols-3">{compareNames.map((candidate, index) => { const score = getNameScore(candidate, area); const isLeastBad = candidate === leastBadName; return <div key={candidate} className={`rounded-2xl border-2 border-primary p-4 text-center ${index === 1 ? "sm:translate-y-5" : ""}`}><Scale className="mx-auto size-7 text-accent" /><p className="mt-2 truncate font-display text-xl font-black text-primary">{candidate}</p><p className="font-display text-4xl font-black text-primary">{score}</p>{isLeastBad && <p className="mt-1 text-[10px] font-black uppercase text-accent">least bad</p>}<div className="mx-auto mt-3 h-2 overflow-hidden rounded-full bg-secondary"><div className="h-full bg-accent" style={{ width: `${score}%` }} /></div></div>; })}</div>
+          {compareNames.length < 2 && <p className="mt-6 text-center text-sm font-bold text-muted-foreground">Add more names to discover additional ways to lose.</p>}
         </ForecastCard>
       </div>
 
