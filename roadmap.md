@@ -7,6 +7,6 @@
 - [x] Verify routing, deterministic results, desktop flow, and phone layout.
 - [x] Add hero breathing room, filled jungle artwork, edge doodles, and inline required markers.
 - [x] Recheck the polished home and forecast pages at desktop and phone widths.
-- [ ] Rename the product to Baby Perfect across all visible copy and metadata.
-- [ ] Recalibrate every deterministic forecast to playful worst-case ranges and copy.
+- [x] Rename the product to Baby Perfect across all visible copy and metadata.
+- [x] Recalibrate every deterministic forecast to playful worst-case ranges and copy.
 - [ ] Update tests and verify the renamed app at desktop and phone widths.

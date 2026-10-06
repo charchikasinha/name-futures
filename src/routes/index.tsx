@@ -10,10 +10,10 @@ import { useNameFutures } from "@/context/name-futures-context";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Name Futures — Weigh every name before it's forever" },
-      { name: "description", content: "Run an absurdly confident life forecast for your baby's future name." },
-      { property: "og:title", content: "Name Futures — Baby names, professionally overanalyzed" },
-      { property: "og:description", content: "Career upside, classroom collisions, romance odds and more. Not science." },
+      { title: "Baby Perfect — No name is ever good enough" },
+      { name: "description", content: "Run an absurdly pessimistic life forecast for your baby's future name." },
+      { property: "og:title", content: "Baby Perfect — Baby names, professionally rejected" },
+      { property: "og:description", content: "Career stumbles, classroom collisions, romantic long shots and more. Not science." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -31,7 +31,7 @@ function Index() {
   const [loading, setLoading] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
   const [error, setError] = useState("");
-  const loadingLines = ["Consulting LinkedIn…", "Polling the school board…", "Asking past mayors…"];
+  const loadingLines = ["Lowering expectations…", "Consulting LinkedIn's basement…", "Confirming no name is perfect…"];
 
   const fullName = [first, middle, last].map((part) => part.trim()).filter(Boolean).join(" ");
 
@@ -60,12 +60,12 @@ function Index() {
       <div className="absolute left-1/2 top-0 -z-0 h-[39rem] w-screen -translate-x-1/2 border-y-2 border-primary bg-primary lg:h-[40rem]" />
       <section className="relative z-10 grid min-h-[39rem] items-center gap-8 pb-14 lg:min-h-[40rem] lg:grid-cols-[1.08fr_.92fr] lg:pb-14">
         <div className="py-10 lg:py-16">
-          <p className="font-script text-3xl text-secondary">A highly serious forecast</p>
+          <p className="font-script text-3xl text-secondary">A highly serious rejection</p>
           <h1 className="mt-3 max-w-3xl font-display text-5xl font-black leading-[.94] text-primary-foreground sm:text-7xl lg:text-8xl">
             Weigh every name before it's forever.
           </h1>
           <p className="mt-6 max-w-xl text-lg font-bold leading-relaxed text-primary-foreground/80 sm:text-xl">
-            Career trajectory. Classroom saturation. Romantic liquidity. Finally, due diligence for the biggest naming decision of your quarter.
+            Career detours. Classroom saturation. Romantic illiquidity. Finally, due diligence that finds fault with absolutely every option.
           </p>
           <p className="data-label mt-8 text-accent">career · school · happiness · love</p>
         </div>
@@ -80,10 +80,10 @@ function Index() {
         <form onSubmit={submit} className="forecast-card p-6 sm:p-8">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
-              <p className="data-label">open a position</p>
+              <p className="data-label">prepare for disappointment</p>
               <h2 className="font-display text-3xl font-black text-primary sm:text-4xl">Try out a name</h2>
             </div>
-            <span className="rounded-full bg-secondary px-3 py-1 text-xs font-extrabold text-primary">No commitment. Yet.</span>
+            <span className="rounded-full bg-secondary px-3 py-1 text-xs font-extrabold text-primary">No winners. Ever.</span>
           </div>
           <div className="mt-7 grid gap-4 sm:grid-cols-2">
             <label className="field-label sm:col-span-2"><span className="field-label-text">Baby's first name <span className="required-mark">*</span></span><Input value={first} onChange={(e) => setFirst(e.target.value)} placeholder="e.g. Mabel" autoComplete="given-name" required /></label>
@@ -101,9 +101,9 @@ function Index() {
         <aside className="forecast-card bg-secondary p-6">
           <p className="data-label">your watchlist</p>
           <h2 className="mt-1 font-display text-2xl font-black text-primary">Shortlist</h2>
-          <p className="mt-2 text-sm font-semibold text-primary/70">Up to three promising name assets.</p>
+          <p className="mt-2 text-sm font-semibold text-primary/70">Up to three equally questionable name assets.</p>
           <div className="mt-5 flex flex-col gap-2">
-            {shortlist.length === 0 ? <p className="rounded-xl border-2 border-dashed border-primary/30 p-5 text-sm font-bold text-primary/55">Your portfolio is suspiciously empty.</p> : shortlist.map((name) => (
+            {shortlist.length === 0 ? <p className="rounded-xl border-2 border-dashed border-primary/30 p-5 text-sm font-bold text-primary/55">No names to reject yet. Suspicious.</p> : shortlist.map((name) => (
               <div key={name} className="flex items-center gap-2 rounded-xl border-2 border-primary bg-surface p-2 shadow-pop">
                 <Button type="button" variant="ghost" className="h-auto min-w-0 flex-1 justify-start truncate border-0 px-2 py-1 text-left text-primary shadow-none" onClick={() => { setFirst(name); void runForecast(name); }}>{name}</Button>
                 <Button type="button" size="icon" variant="ghost" className="size-8 rounded-full" onClick={() => removeName(name)} aria-label={`Remove ${name}`}><X /></Button>
@@ -113,7 +113,7 @@ function Index() {
         </aside>
       </section>
 
-      {loading && <div className="fixed inset-0 z-50 grid place-items-center bg-primary/95 p-5" role="status" aria-live="polite"><div className="text-center text-primary-foreground"><Sparkles className="mx-auto size-12 animate-pulse text-accent" /><p className="mt-6 font-script text-3xl text-secondary">Running the numbers</p><p className="mt-3 font-display text-2xl font-black sm:text-4xl">{loadingLines[loadingStep]}</p><div className="mx-auto mt-6 h-2 w-64 overflow-hidden rounded-full bg-primary-foreground/20"><div className="h-full bg-accent transition-all duration-500" style={{ width: `${((loadingStep + 1) / loadingLines.length) * 100}%` }} /></div></div></div>}
+      {loading && <div className="fixed inset-0 z-50 grid place-items-center bg-primary/95 p-5" role="status" aria-live="polite"><div className="text-center text-primary-foreground"><Sparkles className="mx-auto size-12 animate-pulse text-accent" /><p className="mt-6 font-script text-3xl text-secondary">Baby Perfect is judging</p><p className="mt-3 font-display text-2xl font-black sm:text-4xl">{loadingLines[loadingStep]}</p><div className="mx-auto mt-6 h-2 w-64 overflow-hidden rounded-full bg-primary-foreground/20"><div className="h-full bg-accent transition-all duration-500" style={{ width: `${((loadingStep + 1) / loadingLines.length) * 100}%` }} /></div></div></div>}
     </main>
   );
 }
