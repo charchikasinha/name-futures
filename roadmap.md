@@ -9,4 +9,4 @@
 - [x] Recheck the polished home and forecast pages at desktop and phone widths.
 - [x] Rename the product to Baby Perfect across all visible copy and metadata.
 - [x] Recalibrate every deterministic forecast to playful worst-case ranges and copy.
-- [ ] Update tests and verify the renamed app at desktop and phone widths.
+- [x] Update tests and verify the renamed app at desktop and phone widths.
