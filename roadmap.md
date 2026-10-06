@@ -6,4 +6,4 @@
 - [x] Add the custom Name Futures visual system and original jungle doodles.
 - [x] Verify routing, deterministic results, desktop flow, and phone layout.
 - [x] Add hero breathing room, filled jungle artwork, edge doodles, and inline required markers.
-- [ ] Recheck the polished home and forecast pages at desktop and phone widths.
+- [x] Recheck the polished home and forecast pages at desktop and phone widths.

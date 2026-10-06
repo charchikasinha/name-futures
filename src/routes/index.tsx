@@ -57,8 +57,8 @@ function Index() {
 
   return (
     <main className="relative mx-auto max-w-7xl px-5 pb-16 pt-6 lg:px-8 lg:pt-12">
-      <div className="absolute left-1/2 top-0 -z-0 h-[39rem] w-screen -translate-x-1/2 border-y-2 border-primary bg-primary lg:h-[37rem]" />
-      <section className="relative z-10 grid min-h-[39rem] items-center gap-8 pb-14 lg:min-h-[37rem] lg:grid-cols-[1.08fr_.92fr] lg:pb-10">
+      <div className="absolute left-1/2 top-0 -z-0 h-[39rem] w-screen -translate-x-1/2 border-y-2 border-primary bg-primary lg:h-[40rem]" />
+      <section className="relative z-10 grid min-h-[39rem] items-center gap-8 pb-14 lg:min-h-[40rem] lg:grid-cols-[1.08fr_.92fr] lg:pb-14">
         <div className="py-10 lg:py-16">
           <p className="font-script text-3xl text-secondary">A highly serious forecast</p>
           <h1 className="mt-3 max-w-3xl font-display text-5xl font-black leading-[.94] text-primary-foreground sm:text-7xl lg:text-8xl">
