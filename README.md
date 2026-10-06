@@ -1,29 +1,36 @@
-# Welcome to your Lovable project
+# Baby Perfect
 
-This project was built with [Lovable](https://lovable.dev).
+*No name is ever good enough.*
 
-## Build with Lovable
+A satirical baby-name "prospectus" built in one evening at the **Shark Tank: Most Unethical Hackathon & Pitch Competition** (SF Tech Week, October 2026), where it took **2nd place**.
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+- **Live demo:** https://name-futures.lovable.app
+- **Case study:** https://charchika-sinha.vercel.app/projects/baby-perfect
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+## What it does
 
-## Development
+Parents enter a baby name and where the child will grow up. Baby Perfect answers with a fintech-style prospectus: a NameScore, a letter grade (D+ at best) and an analyst rating from "Sell" to "Junk Bond", plus cards for industry outlook, school, happiness, lifespan, love, power namesakes and a side-by-side comparison of the shortlist. Every name fails; the best you can hope for is "least bad".
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+A demo plan switch (Free / Paid 1 / Paid 2) shows the business model: locked cards blur behind upsells, and the love forecast sits behind the most expensive tier.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+## Ground rules
+
+- **Satire, not science.** All data is simulated except the list of US presidents.
+- **No one is judged by who they are.** Scores come from a hash of the name (and area), never from a name's perceived ethnicity, gender, religion or origin. The same name always gets the same result.
 
 ## Built with
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+Lovable · Claude · React · TanStack Start · Tailwind CSS
+
+## Run it locally
+
+```bash
+npm install
+npm run dev
+```
+
+Forecast data lives in `src/data/providers.ts`; plan tiers and upsell copy live in `src/config/plans.ts`.
+
+## Team
+
+Charchika Sinha and team.
