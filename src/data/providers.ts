@@ -33,71 +33,71 @@ function metric(seed: string, min: number, max: number) {
 }
 
 export function getNameScore(name: string, area: string) {
-  return metric(`score:${name}:${area}`, 58, 96);
+  return metric(`score:${name}:${area}`, 4, 38);
 }
 
 export function getGrade(score: number) {
-  if (score >= 90) return "A+";
-  if (score >= 84) return "A";
-  if (score >= 76) return "B+";
-  if (score >= 68) return "B";
-  return "C+";
+  if (score >= 30) return "D+";
+  if (score >= 22) return "D";
+  if (score >= 13) return "D-";
+  return "F";
 }
 
 export function getRating(score: number) {
-  if (score >= 84) return "Strong Buy";
-  if (score >= 70) return "Hold";
-  return "Speculative";
+  if (score >= 28) return "Sell";
+  if (score >= 16) return "Strong Sell";
+  return "Junk Bond";
 }
 
 export function getCareerData(name: string) {
   const industries = ["Tech", "Finance", "Law", "Medicine", "Creative / Arts", "Politics"].map(
-    (label) => ({ label, score: metric(`career:${name}:${label}`, 43, 97) }),
+    (label) => ({ label, score: metric(`career:${name}:${label}`, 3, 35) }),
   );
   const headlines = [
-    "Founder · Ex-Unicorn · Thought Leader",
-    "Chief Vibes Officer · Keynote Pending",
-    "Partner · Amateur Ceramicist · Disruptor",
-    "Building quietly · Posting loudly",
+    "Open to work · Open to anything",
+    "Aspiring Influencer (est. 2041)",
+    "Reply-all specialist",
+    "Interim Assistant to the Regional Intern",
   ];
-  const headline = headlines[metric(`headline:${name}`, 0, headlines.length - 1)] ?? "Building quietly · Posting loudly";
+  const headline = headlines[metric(`headline:${name}`, 0, headlines.length - 1)] ?? "Open to work · Open to anything";
   return {
     industries,
     headline,
-    cSuiteCount: metric(`csuite:${name}`, 8, 812),
+    cSuiteCount: metric(`csuite:${name}`, 0, 3),
   };
 }
 
 export function getSchoolData(name: string, area: string) {
   return {
-    academicScore: metric(`school:${name}:${area}`, 61, 96),
-    reading: metric(`reading:${area}`, 68, 96),
-    math: metric(`math:${area}`, 64, 94),
-    giftedProgram: metric(`gifted:${area}`, 72, 99),
-    collisions: Number((metric(`collision:${name}:${area}`, 0, 32) / 10).toFixed(1)),
+    academicScore: metric(`school:${name}:${area}`, 8, 40),
+    reading: metric(`reading:${area}`, 18, 48),
+    math: metric(`math:${area}`, 14, 45),
+    giftedProgram: metric(`gifted:${area}`, 9, 39),
+    collisions: metric(`collision:${name}:${area}`, 3, 9),
   };
 }
 
 export function getLifespanData(name: string) {
-  const years = metric(`lifespan:${name}`, 79, 101);
+  const years = metric(`lifespan:${name}`, 58, 71);
   const quips = [
-    "Enough time to reinvent brunch twice.",
-    "Long enough to complain about six new technologies.",
-    "A durable asset with excellent grandparent upside.",
+    "Peaks early. Plans accordingly.",
+    "Will outlive their houseplants, barely.",
+    "Enough time to unsubscribe from almost everything.",
   ];
   return { years, quip: quips[stableHash(name) % quips.length] ?? quips[0] };
 }
 
 export function getHappinessData(name: string) {
-  const score = metric(`happy:${name}`, 62, 98);
-  const mood = score >= 88 ? "Unreasonably sunny" : score >= 76 ? "Good snack energy" : "Quietly thriving";
+  const score = metric(`happy:${name}`, 5, 35);
+  const moods = ["Mildly damp", "Permanent Monday", "Cautiously disappointed"];
+  const mood = moods[stableHash(`mood:${name}`) % moods.length] ?? "Cautiously disappointed";
   return { score, mood };
 }
 
 export function getLoveData(name: string) {
   const start = stableHash(`love:${name}`) % COMPATIBLE_NAMES.length;
   return {
-    probability: metric(`romance:${name}`, 63, 97),
+    probability: metric(`romance:${name}`, 2, 24),
     matches: [0, 1, 2].map((offset) => COMPATIBLE_NAMES[(start + offset * 5) % COMPATIBLE_NAMES.length] ?? "Avery"),
   };
 }
@@ -118,7 +118,7 @@ export function getOfficeholders(name: string, area: string) {
   return {
     presidents,
     locals,
-    odds: `1 in ${metric(`president:${name}`, 42000, 990000).toLocaleString("en-US")}`,
+    odds: `1 in ${metric(`president:${name}`, 20_000_000, 900_000_000).toLocaleString("en-US")}`,
   };
 }
 

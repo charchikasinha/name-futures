@@ -80,9 +80,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Name Futures" },
-      { name: "description", content: "A highly serious market forecast for your baby's name." },
-      { name: "author", content: "Name Futures" },
+      { title: "Baby Perfect" },
+      { name: "description", content: "A highly serious market forecast that finds no baby name quite good enough." },
+      { name: "author", content: "Baby Perfect" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

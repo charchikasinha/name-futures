@@ -29,12 +29,12 @@ export const FEATURE_TIER: Record<ForecastFeature, PlanId> = {
 
 export const UPGRADE_COPY: Record<ForecastFeature, string> = {
   school: "Unlock the report card — start peeking",
-  industry: "Unlock their future corner office — upgrade to Plus",
-  happiness: "Unlock the vibes desk — upgrade to Plus",
-  power: "Unlock their campaign strategy — upgrade to Plus",
-  lifespan: "Unlock the actuarial gossip — upgrade to Premium",
-  love: "Unlock your baby's love life — upgrade to Premium",
-  compare: "Put the shortlist on the scales — upgrade to Premium",
+  industry: "Unlock their future cubicle — upgrade to Plus",
+  happiness: "Unlock the disappointing vibes desk — upgrade to Plus",
+  power: "Unlock their doomed campaign strategy — upgrade to Plus",
+  lifespan: "Unlock the actuarial bad news — upgrade to Premium",
+  love: "Unlock your baby's romantic long shots — upgrade to Premium",
+  compare: "Find the least bad option — upgrade to Premium",
 };
 
 export function canAccess(plan: PlanId, feature: ForecastFeature) {
