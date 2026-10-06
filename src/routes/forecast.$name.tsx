@@ -2,7 +2,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowLeft, BriefcaseBusiness, Building2, Crown, Heart, HeartHandshake, MapPin, Scale, Sparkles } from "lucide-react";
 
 import { Gauge, ScoreBars } from "@/components/name-futures/charts";
-import { DoodleGarden } from "@/components/name-futures/doodles";
+import { DoodleGarden, EdgeDoodles } from "@/components/name-futures/doodles";
 import { ForecastCard } from "@/components/name-futures/forecast-card";
 import { Button } from "@/components/ui/button";
 import { useNameFutures } from "@/context/name-futures-context";
@@ -37,7 +37,9 @@ function ForecastPage() {
   const compareNames = Array.from(new Set([name, ...shortlist])).slice(0, 3);
 
   return (
-    <main className="mx-auto max-w-7xl px-5 pb-20 pt-4 lg:px-8">
+    <main className="relative mx-auto max-w-7xl px-5 pb-20 pt-4 lg:px-8">
+      <EdgeDoodles side="left" />
+      <EdgeDoodles side="right" />
       <section className="relative overflow-hidden rounded-[2rem] border-2 border-primary bg-primary p-6 text-primary-foreground shadow-pop-lg sm:p-9 lg:p-12">
         <div className="relative z-10 grid gap-8 lg:grid-cols-[1fr_.6fr]">
           <div>
@@ -50,7 +52,7 @@ function ForecastPage() {
               <div className="rounded-2xl bg-accent px-5 py-4 text-accent-foreground shadow-pop"><span className="block text-[10px] font-black uppercase tracking-widest">analyst rating</span><strong className="font-display text-2xl font-black sm:text-3xl">{data.rating}</strong></div>
             </div>
           </div>
-          <div className="hidden text-secondary lg:block"><DoodleGarden compact /></div>
+          <div className="hidden lg:block"><DoodleGarden compact surface="blue" /></div>
         </div>
         <Sparkles className="absolute right-8 top-8 size-9 rotate-12 text-accent" />
       </section>
