@@ -14,4 +14,10 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+
+  it("matches a forecast page", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    const matches = router.matchRoutes("/forecast/Mabel?area=Austin");
+    expect(matches.at(-1)?.routeId).toBe("/forecast/$name");
+  });
 });
