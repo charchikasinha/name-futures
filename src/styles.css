@@ -179,7 +179,8 @@
   font-size: 0.78rem;
   font-weight: 900;
   text-transform: uppercase;
-  & span { color: var(--accent); }
+  & .field-label-text { display: inline; color: var(--primary); }
+  & .required-mark { display: inline; color: var(--accent); }
   & em { color: var(--muted-foreground); font-size: 0.65rem; font-style: normal; }
 }
 

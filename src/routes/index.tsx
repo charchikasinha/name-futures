@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowRight, Plus, Sparkles, X } from "lucide-react";
 import { useState, type FormEvent } from "react";
 
-import { DoodleGarden } from "@/components/name-futures/doodles";
+import { DoodleGarden, EdgeDoodles } from "@/components/name-futures/doodles";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNameFutures } from "@/context/name-futures-context";
@@ -57,8 +57,8 @@ function Index() {
 
   return (
     <main className="relative mx-auto max-w-7xl px-5 pb-16 pt-6 lg:px-8 lg:pt-12">
-      <div className="absolute left-1/2 top-0 -z-0 h-[34rem] w-screen -translate-x-1/2 border-y-2 border-primary bg-primary" />
-      <section className="relative z-10 grid min-h-[34rem] items-center gap-8 lg:grid-cols-[1.08fr_.92fr]">
+      <div className="absolute left-1/2 top-0 -z-0 h-[39rem] w-screen -translate-x-1/2 border-y-2 border-primary bg-primary lg:h-[37rem]" />
+      <section className="relative z-10 grid min-h-[39rem] items-center gap-8 pb-14 lg:min-h-[37rem] lg:grid-cols-[1.08fr_.92fr] lg:pb-10">
         <div className="py-10 lg:py-16">
           <p className="font-script text-3xl text-secondary">A highly serious forecast</p>
           <h1 className="mt-3 max-w-3xl font-display text-5xl font-black leading-[.94] text-primary-foreground sm:text-7xl lg:text-8xl">
@@ -69,12 +69,14 @@ function Index() {
           </p>
           <p className="data-label mt-8 text-accent">career · school · happiness · love</p>
         </div>
-        <div className="relative hidden h-[31rem] text-secondary lg:block">
-          <DoodleGarden />
+        <div className="relative hidden h-[31rem] lg:block">
+          <DoodleGarden surface="blue" />
         </div>
       </section>
 
-      <section className="relative z-20 mx-auto -mt-2 grid max-w-6xl gap-6 lg:grid-cols-[1fr_.42fr]">
+      <section className="relative z-20 mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1fr_.42fr]">
+        <EdgeDoodles side="left" />
+        <EdgeDoodles side="right" />
         <form onSubmit={submit} className="forecast-card p-6 sm:p-8">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
@@ -84,10 +86,10 @@ function Index() {
             <span className="rounded-full bg-secondary px-3 py-1 text-xs font-extrabold text-primary">No commitment. Yet.</span>
           </div>
           <div className="mt-7 grid gap-4 sm:grid-cols-2">
-            <label className="field-label sm:col-span-2">Baby's first name <span>*</span><Input value={first} onChange={(e) => setFirst(e.target.value)} placeholder="e.g. Mabel" autoComplete="given-name" required /></label>
+            <label className="field-label sm:col-span-2"><span className="field-label-text">Baby's first name <span className="required-mark">*</span></span><Input value={first} onChange={(e) => setFirst(e.target.value)} placeholder="e.g. Mabel" autoComplete="given-name" required /></label>
             <label className="field-label">Middle name <em>optional</em><Input value={middle} onChange={(e) => setMiddle(e.target.value)} placeholder="The plot twist" autoComplete="additional-name" /></label>
             <label className="field-label">Last name <em>optional</em><Input value={last} onChange={(e) => setLast(e.target.value)} placeholder="The family brand" autoComplete="family-name" /></label>
-            <label className="field-label sm:col-span-2">Where will they grow up? <span>*</span><Input value={area} onChange={(e) => setArea(e.target.value)} placeholder="City or ZIP" required /></label>
+            <label className="field-label sm:col-span-2"><span className="field-label-text">Where will they grow up? <span className="required-mark">*</span></span><Input value={area} onChange={(e) => setArea(e.target.value)} placeholder="City or ZIP" required /></label>
           </div>
           {error && <p role="alert" className="mt-3 text-sm font-bold text-destructive">{error}</p>}
           <div className="mt-6 flex flex-wrap gap-3">
