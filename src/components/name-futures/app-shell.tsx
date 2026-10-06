@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Scale } from "lucide-react";
 import type { ReactNode } from "react";
 
+import { Button } from "@/components/ui/button";
 import { PLAN_CONFIG, PLAN_ORDER, type PlanId } from "@/config/plans";
 import { useNameFutures } from "@/context/name-futures-context";
 import { cn } from "@/lib/utils";
@@ -13,18 +14,20 @@ export function PlanToggle() {
       <span className="hidden text-xs font-extrabold uppercase tracking-widest text-primary sm:block">Demo plan</span>
       <div className="flex rounded-full border-2 border-primary bg-surface p-1 shadow-pop" role="group">
         {PLAN_ORDER.map((id) => (
-          <button
+          <Button
             key={id}
             type="button"
+            variant="ghost"
+            size="sm"
             onClick={() => setPlan(id)}
             aria-pressed={plan === id}
             className={cn(
-              "rounded-full px-2.5 py-1.5 text-xs font-extrabold transition sm:px-3.5",
+              "h-auto rounded-full border-0 px-2.5 py-1.5 text-xs shadow-none sm:px-3.5",
               plan === id ? "bg-primary text-primary-foreground" : "text-primary hover:bg-secondary",
             )}
           >
             {PLAN_CONFIG[id].label}
-          </button>
+          </Button>
         ))}
       </div>
     </div>

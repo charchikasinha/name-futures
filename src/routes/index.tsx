@@ -57,7 +57,7 @@ function Index() {
 
   return (
     <main className="relative mx-auto max-w-7xl px-5 pb-16 pt-6 lg:px-8 lg:pt-12">
-      <div className="absolute left-1/2 top-0 -z-0 h-96 w-screen -translate-x-1/2 border-y-2 border-primary bg-primary" />
+      <div className="absolute left-1/2 top-0 -z-0 h-[34rem] w-screen -translate-x-1/2 border-y-2 border-primary bg-primary" />
       <section className="relative z-10 grid min-h-[34rem] items-center gap-8 lg:grid-cols-[1.08fr_.92fr]">
         <div className="py-10 lg:py-16">
           <p className="font-script text-3xl text-secondary">A highly serious forecast</p>
@@ -103,7 +103,7 @@ function Index() {
           <div className="mt-5 flex flex-col gap-2">
             {shortlist.length === 0 ? <p className="rounded-xl border-2 border-dashed border-primary/30 p-5 text-sm font-bold text-primary/55">Your portfolio is suspiciously empty.</p> : shortlist.map((name) => (
               <div key={name} className="flex items-center gap-2 rounded-xl border-2 border-primary bg-surface p-2 shadow-pop">
-                <button type="button" className="min-w-0 flex-1 truncate text-left font-extrabold text-primary" onClick={() => { setFirst(name); void runForecast(name); }}>{name}</button>
+                <Button type="button" variant="ghost" className="h-auto min-w-0 flex-1 justify-start truncate border-0 px-2 py-1 text-left text-primary shadow-none" onClick={() => { setFirst(name); void runForecast(name); }}>{name}</Button>
                 <Button type="button" size="icon" variant="ghost" className="size-8 rounded-full" onClick={() => removeName(name)} aria-label={`Remove ${name}`}><X /></Button>
               </div>
             ))}
